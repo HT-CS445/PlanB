@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitTracker.MainPage">
+
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="500" BackgroundColor="LightGreen">
+            <Entry x:Name="dayEntryField" PlaceholderColor="SlateGrey" Placeholder="What's Today?" />
+            <Entry x:Name="timeEntryField" PlaceholderColor="SlateGrey" Placeholder="What Time" />
+            <Entry x:Name="habitEntryField" PlaceholderColor="SlateGrey" Placeholder="What's Your Habit?" />
+            <Entry x:Name="goalEntryField" PlaceholderColor="SlateGrey" Placeholder="What's Your Goal?" />
+            <Button x:Name="saveButton" BackgroundColor="DarkGreen" Text="Save" Clicked="saveButton_Clicked" />
+        </VerticalStackLayout>
+        <ListView x:Name="listView" FlexLayout.Grow="2" HasUnevenRows="True" ItemTapped="listView_ItemTapped" BackgroundColor="LightGreen" >
+            <ListView.ItemTemplate>
+                <DataTemplate> 
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding Day}" FontSize="17" FontAttributes="Bold" />
+                            <Label Text="{Binding Time}" FontSize="17" FontAttributes="Bold" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1" Text="{Binding Habit}" FontAttributes="Bold" />
+                                <Label Grid.Column="2" Text="{Binding Goal}" FontAttributes="Bold" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+    
+</ContentPage>
